@@ -38,26 +38,28 @@
 </head>
 <body>
 
-@foreach ($dokter as $doc)
-<div class="col-md-4">
-    <div class="doctor-entry text-center">
-        <div class="doctor-img" style="border: 3px solid #43A9AB; border-radius: 50px; width: 308px; height: 280px; overflow: hidden;">
-            <img src="{{ asset('storage/dokter/'.$doc->gambar) }}" width="307px" height="279px" alt="Dokter Image" style="border-radius: 50px;">
+<div class="row">
+    @foreach ($dokter as $doc)
+    <div class="col-md-4" style="margin-top: 20px; margin-bottom: 20px;">
+        <div class="doctor-entry text-center">
+            <div class="doctor-img" style="border: 3px solid #43A9AB; border-radius: 50px; width: 308px; height: 280px; overflow: hidden;">
+                <img src="{{ asset('storage/dokter/'.$doc->gambar) }}" width="307px" height="279px" alt="Dokter Image" style="border-radius: 50px;">
+            </div>
+        </div>
+        <div class="doctor-info" style="margin-top: 20px;"> <!-- Tambahkan margin-top di sini -->
+            <h3>{{ $doc->dokter }}</h3>
+            <p style="color: #296769; font-weight: bold; margin-bottom: 10px;">Rp{{ number_format($doc->harga_konsultasi, 0, ',', '.') }}/konsul</p> <!-- Tambahkan margin-bottom di sini -->
+            <p>
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9a9b4abcb12eef4fe1a823ca296cb96376688cf790115a82a496bcd01b822084?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" alt="Descriptive alt text for the image" class="icon-image" alt="Logo" style="width: 30px; height: 30px; margin-right: 10px;">
+                {{ date('H:i', strtotime($doc->jam_mulai)) }} - {{ date('H:i', strtotime($doc->jam_selesai)) }}
+            </p>
+            <div style="text-align: left;">
+                <button onclick="openPopup('{{ asset('storage/dokter/'.$doc->gambar) }}', 'Konsultasi Melalui Whatsapp', '{{ $doc->dokter }}')" style="background-color: #F18200; color: white; border: none; padding: 10px 20px; border-radius: 10px; width: 261px; height: 47px; font-weight: bold;">Chat Dokter</button>
+            </div>
         </div>
     </div>
-    <div class="doctor-info" style="margin-top: 20px;"> <!-- Tambahkan margin-top di sini -->
-        <h3>{{ $doc->dokter }}</h3>
-        <p style="color: #296769; font-weight: bold; margin-bottom: 10px;">Rp{{ number_format($doc->harga_konsultasi, 0, ',', '.') }}/konsul</p> <!-- Tambahkan margin-bottom di sini -->
-        <p>
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9a9b4abcb12eef4fe1a823ca296cb96376688cf790115a82a496bcd01b822084?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" alt="Descriptive alt text for the image" class="icon-image" alt="Logo" style="width: 30px; height: 30px; margin-right: 10px;">
-            {{ date('H:i', strtotime($doc->jam_mulai)) }} - {{ date('H:i', strtotime($doc->jam_selesai)) }}
-        </p>
-        <div style="text-align: left;">
-            <button onclick="openPopup('{{ asset('storage/dokter/'.$doc->gambar) }}', 'Konsultasi Melalui Whatsapp', '{{ $doc->dokter }}')" style="background-color: #F18200; color: white; border: none; padding: 10px 20px; border-radius: 10px; width: 261px; height: 47px; font-weight: bold;">Chat Dokter</button>
-        </div>
-    </div>
+    @endforeach
 </div>
-@endforeach
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -75,7 +77,7 @@
             <h2 id="popup-text" style="text-align: center; display: block; margin: 0 auto;"></h2>
             <p id="popup-title" style="text-align: center; display: block; margin: 0 auto; color: #43A9AB; font-size: 24px;"></p>
         </div>
-        <div class="modal-footer" style="text-align: center;">
+        <div class="modal-footer" style="text-align: center; display: flex; justify-content: center;">
             <button type="button" class="btn" style="background-color: #FFA500; color: white; width: 358px; height: 60px; padding: 10px 20px;">Chat WA</button>
         </div>
     </div>
