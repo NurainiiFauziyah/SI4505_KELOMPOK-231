@@ -4,15 +4,15 @@
         <div class="row">
             <div class="col-12 col-md-3 col-lg-2 mx-auto mb-4 mt-5">
                 <h6 class="text-uppercase fw-bold mb-4">Contact Us</h6>
-                <p>@punten.coffee</p>
+                <p>@farmedic</p>
             </div>
             <div class="col-12 col-md-3 col-lg-2 mx-auto mb-4 mt-5">
                 <h6 class="text-uppercase fw-bold mb-4">Contact Us</h6>
-                <p>@punten.coffee</p>
+                <p>@farmedic</p>
             </div>
             <div class="col-12 col-md-3 col-lg-2 mx-auto mb-4 mt-5">
                 <h6 class="text-uppercase fw-bold mb-4">Contact Us</h6>
-                <p>@punten.coffee</p>
+                <p>@farmedic</p>
             </div>
         </div>
     </div>

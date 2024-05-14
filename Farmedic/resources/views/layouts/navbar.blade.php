@@ -34,7 +34,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #1B4445;">
     <div class="container">
-        <a class="navbar-brand" href="" style="margin-right: 70px;"><b><span style="color: #FFFFFF">F A R M E D I C</span></b></a>
+    <a class="navbar-brand" href="{{ route('home') }}" style="margin-right: 70px;"><b><span style="color: #FFFFFF">F A R M E D I C</span></b></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,9 +46,9 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownLayanan" style="background-color: #FFFFFF; border-radius: 8px; padding: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: none; transition: opacity 0.5s ease;">
                     <a class="dropdown-item" href="#" style="color: #1B4445;">Kamus penyakit</a>
                     <a class="dropdown-item" href="#" style="color: #1B4445;">Panduan perawatan</a>
-                    <a class="dropdown-item" href="#" style="color: #1B4445;">Konsultasi online</a>
+                    <a class="dropdown-item" href="konsultasi" style="color: #1B4445;">Konsultasi online</a>
                     <a class="dropdown-item" href="#" style="color: #1B4445;">Manajemen tracking</a>
-                    <a class="dropdown-item" href="#" style="color: #1B4445;">Pemesanan vaksin</a>
+                    <a class="dropdown-item" href="{{ route('pemesanan') }}" style="color: #1B4445;">Pemesanan vaksin</a>
                 </div>
             </div>
             <script>
@@ -78,7 +78,7 @@
                 });
             </script>
             <div class="navbar-nav ms-auto " style="color: #FFFFFF">
-                <a class="nav-link" href="" style="color: #FFFFFF;">Forum</a>
+            <a class="nav-link" href="{{ route('forum') }}" style="color: #FFFFFF;">Forum</a>
             </div>
             <div class="navbar-nav ms-auto ">
                 <a class="nav-link" href="" style="color: #FFFFFF;">Artikel</a>
@@ -93,6 +93,7 @@
                 <a class="nav-link" href="" style="color: #FFFFFF; margin-right: 20px;">Riwayat User</a>
             </div>
             <div class="navbar-nav ms-auto ">
+            <div class="navbar-nav ms-auto ">
                 <form class="d-flex" role="search" style="margin-right: 20px;">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="border-radius: 20px;">
                     <a href="#" id="profileBtn"><img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9dc310fced59e51b65a2c12224bba16738b2c8cfaee05abe85598f174a0386bb?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" alt="profile" style="width : 40px; height: 40px; border-radius: 50%; margin-left: 10px;"></a>
@@ -103,6 +104,7 @@
 </nav>
 
 <!-- End Navbar -->
+
 <!-- Sidebar -->
 <div id="profileSidebar" class="bg-light d-flex justify-content-end" style="position: fixed; top: 56px; right: -300px; height: 100%; width: 300px; z-index: 1001; overflow-x: hidden; transition: 0.5s;">
     <div class="container text-center">
