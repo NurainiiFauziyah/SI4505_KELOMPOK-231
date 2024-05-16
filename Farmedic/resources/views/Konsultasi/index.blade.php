@@ -61,6 +61,7 @@
     @endforeach
 </div>
 
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -71,11 +72,11 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body" id="modal-body" style="text-align: center;">
+        <div class="modal-body" id="modal-body" style="text-align: center; margin: 0 auto;">
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/eb2e77bffbfcbcf9293a94d78c320f7587e826fc5a30af711a6c95c8ccea5050?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" alt="Descriptive alt text of the image" class="responsive-image" alt="Logo" style="width: 250px; height: 250px; display: block; margin: 0 auto;">
             <!-- Tempatkan gambar dan teks di sini -->
-            <h2 id="popup-text" style="text-align: center; display: block; margin: 0 auto;"></h2>
-            <p id="popup-title" style="text-align: center; display: block; margin: 0 auto; color: #43A9AB; font-size: 24px;"></p>
+            <h2 id="popup-text" style="text-align: center; margin: 0 auto;"></h2>
+            <p id="popup-title" style="text-align: center; margin: 0 auto; color: #43A9AB; font-size: 24px;"></p>
         </div>
         <div class="modal-footer" style="text-align: center; display: flex; justify-content: center;">
             <button type="button" class="btn" style="background-color: #FFA500; color: white; width: 358px; height: 60px; padding: 10px 20px;">Chat WA</button>

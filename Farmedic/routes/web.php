@@ -7,7 +7,8 @@ use App\Http\Controllers\DokterHewanController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home'); // Menamai rute homepage sebagai 'home'
+
 
 Route::get('/konsultasi', [KonsultasiController::class, 'index'])->name('Konsultasi.index');
 
@@ -18,6 +19,15 @@ Route::post('/Dokter/store', [DokterHewanController::class, 'store'])->name('Dok
 Route::get('/Dokter/{id}/edit', [DokterHewanController::class, 'edit'])->name('Dokter.edit');
 Route::put('/Dokter/{id}/update', [DokterHewanController::class, 'update'])->name('Dokter.update');
 Route::delete('/Dokter/{id}/destroy', [DokterHewanController::class, 'destroy'])->name('Dokter.destroy');
+
+Route::get('/forum', function () {
+    return view('Forum.forum');
+})->name('forum');
+
+Route::get('/pemesanan', function () {
+    return view('Pemesanan Vaksin.pemesanan');
+})->name('pemesanan');
+
 
 
 
