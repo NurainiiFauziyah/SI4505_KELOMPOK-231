@@ -34,7 +34,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #1B4445;">
     <div class="container">
-    <a class="navbar-brand" href="{{ route('home') }}" style="margin-right: 70px;"><b><span style="color: #FFFFFF">F A R M E D I C</span></b></a>
+        <a class="navbar-brand" href="{{ route('home') }}" style="margin-right: 70px;"><b><span style="color: #FFFFFF">F A R M E D I C</span></b></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
