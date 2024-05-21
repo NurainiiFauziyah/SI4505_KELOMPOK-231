@@ -29,6 +29,19 @@ Route::get('/forum', function () {
     return view('Forum.forum');
 })->name('forum');
 
+Route::get('/pemesanan', function () {
+    return view('Pemesanan Vaksin.pemesanan');
+})->name('pemesanan');
+
+
+Route::get('/panduanperawatan', function () {
+    return view('panduan.rawat');
+});
+
+Route::get('/kamuspenyakit', function () {
+    return view('kamuspenyakit.kamus');
+});
+
 Route::get('/rekomendasiobat', function () {
     return view('rekomendasi.recom');
 });

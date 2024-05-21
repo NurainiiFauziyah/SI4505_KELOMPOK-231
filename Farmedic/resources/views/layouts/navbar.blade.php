@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Sidebar</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
         @media (max-width: 991.98px) {
@@ -44,7 +43,7 @@
                     Layanan <img src="https://cdn-icons-png.flaticon.com/512/25/25243.png" alt="dropdown icon" style="width: 12px; height: 12px; margin-left: 5px; filter: brightness(0) invert(1);">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownLayanan" style="background-color: #FFFFFF; border-radius: 8px; padding: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: none; transition: opacity 0.5s ease;">
-                    <a class="dropdown-item" href="#" style="color: #1B4445;">Kamus penyakit</a>
+                    <a class="dropdown-item" href="kamuspenyakit" style="color: #1B4445;">Kamus penyakit</a>
                     <a class="dropdown-item" href="#" style="color: #1B4445;">Panduan perawatan</a>
                     <a class="dropdown-item" href="konsultasi" style="color: #1B4445;">Konsultasi online</a>
                     <a class="dropdown-item" href="#" style="color: #1B4445;">Manajemen tracking</a>
