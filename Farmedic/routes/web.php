@@ -5,11 +5,45 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KonsultasiController;
 use App\Http\Controllers\DokterHewanController;
 use App\Http\Controllers\KatalogController;
+use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\ReminderController;
+use App\Http\Controllers\TrackingController;
+use App\Http\Controllers\SessionController;
+
 
 
 Route::get('/', function () {
+    return view('register');
+});
+
+Route::get('/register',[SessionController::class, 'get_register']);
+Route::post('/register',[SessionController::class, 'post_register']);
+
+Route::get('/login',[SessionController::class, 'get_login']);
+Route::post('/login',[SessionController::class, 'post_login']);
+
+Route::get('/sesi/logout',[SessionController::class, 'logout']);
+
+Route::match(['get', 'post'], '/homepage', function () {
     return view('welcome');
-})->name('home'); // Menamai rute homepage sebagai 'home'
+});
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('home'); //
+
+
+Route::get('/reminder', [ReminderController::class, 'index'])->name('reminder.index');
+
+Route::get('/monitoring', [MonitoringController::class, 'index'])->name('monitoring.index');
+Route::post('/monitoring/filter', [MonitoringController::class, 'filter'])->name('monitoring.filter');
+
+
+
+Route::get('/trackings', [TrackingController::class, 'index'])->name('trackings.index');
+Route::post('/trackings', [TrackingController::class, 'store'])->name('trackings.store');
+Route::delete('/trackings/{id}', [TrackingController::class, 'destroy'])->name('trackings.destroy');
+
 
 
 Route::get('/konsultasi', [KonsultasiController::class, 'index'])->name('Konsultasi.index');
