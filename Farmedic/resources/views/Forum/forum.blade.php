@@ -1,18 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-<style>
-    .active-forum {
-        background-color: #F18200;
-        border-radius: 999px; /* Untuk membuatnya bulat */
-        padding: 10px;
-        color: white;
-        font-size: 15px;
-        font-family: Inter;
-        font-weight: 700;
-        word-wrap: break-word;
-    }
-</style>
+
 
 <!-- Carousel -->
 <div style="width: 100%; height: 400px; position: relative;">
@@ -31,4 +20,50 @@
         </div>
     </div>
 </div>
+
+<div class="discussion-container">
+    <div class="discussion-list">
+        @foreach($discussions as $discussion)
+        <div class="discussion-item">
+            <div class="discussion-avatar">
+                @if(auth()->check())
+                <img src="{{ auth()->user()->avatar }}" alt="User Avatar">
+            @else
+                <img src="gambar\download (2).jpg" alt="Default Avatar">
+            @endif
+            </div>
+            <div class="discussion-details">
+                <a href="{{ route('discussion.detail', ['id' => $discussion->id]) }}">
+                    <h3>{{ $discussion->title }}</h3>
+                </a>
+                
+                <p>{{ $discussion->content }}</p>
+                <div class="discussion-footer">
+                    <img src="gambar\download (2).jpg" alt="User Avatar">
+                    <span>{{ $discussion->comments_count }} comments</span>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+    <div class="discussion-sidebar">
+        <a href="{{ route('discussion.create') }}" class="btnstart">Start New Discussion</a>
+        <ul class="discussion-menu">
+            <li><a href=""><img src="gambar\diskusi.PNG" alt="Icon"> All Discussions</a></li>
+            <li><a href="#"><img src="gambar\follow.PNG" alt="Icon"> Following</a></li>
+        </ul>
+        <div class="discussion-users">
+            @foreach($users as $user)
+            <div class="user-item">
+                <img src="gambar\download (2).jpg" alt="User Avatar">
+                <div class="user-details">
+                    <h4>{{ $user->name }}</h4>
+                    <p>{{ $user->bio }}</p>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
 @endsection
