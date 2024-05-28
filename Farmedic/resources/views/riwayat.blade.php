@@ -2,7 +2,7 @@
 
 @section('content')
 
-<!-- Carousel -->
+
 <div class="carousel">
     <div class="layer layer-1"></div>
     <div class="layer layer-2"></div>
