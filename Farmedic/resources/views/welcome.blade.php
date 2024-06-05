@@ -129,4 +129,46 @@
     </div>
 </div>
 
+<!-- Footer -->
+<!-- Footer -->
+<!-- Footer -->
+<footer class="bg-custom text-white mt-5 small-footer">
+    <div class="container">
+        <div class="row py-2">
+            <div class="col-md-6">
+                <h5 class="mb-1">Kontak Emergency</h5>
+                <p class="mb-1">
+                    Farmedic<br>
+                    Jl. Kesehatan Hewan No. 45<br>
+                    Jakarta Selatan 12345<br>
+                    Indonesia<br>
+                    <i class="fa fa-phone"></i> (021) 1234 5678, (021) 8765 4321<br>
+                    <i class="fa fa-envelope"></i> emergency@farmedic.id
+                </p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a href="#" class="text-white me-2"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="text-white me-2"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="text-white me-2"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="text-white"><i class="fa fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .bg-custom {
+        background-color: #1B4445;
+    }
+    .small-footer {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .small-footer .col-md-6 h5,
+    .small-footer .col-md-6 p {
+        margin-bottom: 0.5rem;
+    }
+</style>
+
 @endsection
+
