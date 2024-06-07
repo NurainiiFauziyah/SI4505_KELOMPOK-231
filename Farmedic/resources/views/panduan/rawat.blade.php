@@ -33,7 +33,8 @@
         
         align-items: center;
         justify-content: right;
-        margin-top: auto;
+        margin-top: 70px;
+        margin-left: 50px;
         
         }
         article.par2 {
@@ -46,7 +47,8 @@
       
       align-items: center;
       justify-content: right;
-      margin-top: a
+      margin-top: 70px;
+      margin-left: 50px;
         }
         p{
             font-family: Poppins;
@@ -66,12 +68,14 @@
         box-sizing: border-box;
         }
         .slider {
-        width: 580px;
+        width: 550px;
         height: 380px;
         margin: auto;
         overflow: hidden;
         transform: translateY(5%);
         position: relative;
+        margin-right: 90px;
+        margin-top: 50px;
         
         }
         .slide {
@@ -148,11 +152,63 @@
             letter-spacing: 0.5px;
         }
 
-    </style>
+        .main-box {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    top: -30%;
+}
 
+.layer {
+    position: relative;
+    
+}
+
+.layer1 {
+    background-color: #869E9E;
+    height: 97%;
+    border-radius: 0 0 15px 15px; 
+}
+
+.layer2 {
+    background-color: #D4D8DB; 
+    height: 100%;
+    border-radius: 0 0 15px 15px; 
+}
+
+.content-box {
+    position: relative;
+    z-index: 3;
+    background: #1B4445;
+    border-radius: 0 0 70px 70px; 
+    padding : 20px;
+    height: 94%;
+    text-align: center; 
+    color: white;
+    padding: 100px 20px 20px;
+    font-family: 'Poppins', sans-serif; 
+} 
+
+.content-box .card-title {
+    font-weight: 700;
+    margin-bottom: 15px; 
+}
+
+
+    </style>
+@extends('layouts.layout')
     <body>
-        @include ('kamuspenyakit.nav')
-        @include ('panduan.header')
+    @section('content')   
+    <div class="d-flex justify-content-center align-items-center vh-50">
+        <div class="position-relative main-box">
+            <div class="layer layer2"></div>
+            <div class="layer layer1"></div>
+            <div class="content-box">
+                <h1 class="card-title">Panduan Perawatan</h1>
+                <h5 class="card-text">Tingkatkan kesehatan dan kesejahteraan hewan ternak Anda dengan panduan perawatan terkini dari Famedic</h5>
+            </div>
+        </div>
+    </div>  
     <!-- slider image -->
     <div class="kotak" style="width: 100%; height: 130%; justify-content:center; top: 390px; background-position:center; position: absolute; margin:auto;background: white; box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.25); border-radius: 41px 41px 0px 0px">
         <div class="slider" style ="float:right; top:10%">
@@ -243,7 +299,7 @@
         </aside>
         <div class ="next-to-obat" style="position:absolute; justify-content:center; top:948px;left:39%;margin:auto; text-align:center">
             <h3 style="font-size:20px">Butuh rekomendasi obat? Klik disini</h3>
-            <center><a href="/rekomendasiobat"><button class="obat" >
+            <center><a href="/rekomendasi_obat"><button class="obat" >
                     Rekomendasi Obat
             </button></a></center>
 
@@ -251,6 +307,6 @@
         </div>
     </div>
 
-
+    @endsection
 </body>
 </html>    

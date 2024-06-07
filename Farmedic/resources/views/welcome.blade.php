@@ -1,174 +1,125 @@
-@extends('layouts.layout')
+<?php
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReminderController;
+use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\TrackingController;
+use App\Http\Controllers\KonsultasiController;
+use App\Http\Controllers\KatalogController;
+use App\Http\Controllers\DokterHewanController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserHistoryController;
+use App\Http\Controllers\DiscussionController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\KamusController;
+use App\Http\Controllers\RekomendasiObatController;
+use App\Http\Controllers\WelcomeController;
 
-@section('content')
-<!-- Carousel -->
-<div class="card mb-3" style="width: 100%; background-color: #1B4445; border: none; border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; height: 400px; display: flex; align-items: center; justify-content: space-between;">
-    <div class="card-body" style="display: flex; align-items: center; justify-content: start;">
-        <div style="flex: 1; text-align: left; margin-right: 20px;">
-            <h5 class="card-title" style="color: #FFFFFF; font-size: 30px;">Selamat datang di Farmedic!</h5>
-            <p class="card-text" style="color: #FFFFFF; font-size: 25px;">Konsultasikan kesehatan dan perawatan hewan ternakmu dengan kami.</p>
-        </div>
-        <div style="flex: 0 0 300px;">
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/23941d60b05a1b45c61fc90fa459a885a60b403be2c0b84fc1b380fe15f7e699?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" alt="gambar" style="width: 300px; height: 297px;">
-        </div>
-    </div>
-</div>
+// Rute untuk halaman utama
+Route::get('/welcome', [WelcomeController::class, 'index']);
+
+// Rute untuk register
+Route::get('/register', [SessionController::class, 'get_register']);
+Route::post('/register', [SessionController::class, 'post_register']);
+
+// Rute untuk login
+Route::get('/login', [SessionController::class, 'get_login']);
+Route::post('/login', [SessionController::class, 'post_login']);
+
+// Rute untuk logout
+Route::post('/logout', [SessionController::class, 'logout']);
+
+// Rute untuk halaman beranda
+Route::match(['get', 'post'], '/homepage', function () {
+    return view('welcome');
+})->name('homepage');
+
+// Rute untuk reminder
+Route::get('/reminder', [ReminderController::class, 'index'])->name('reminder.index');
+
+// Rute untuk monitoring
+Route::get('/monitoring', [MonitoringController::class, 'index'])->name('monitoring.index');
+Route::post('/monitoring/filter', [MonitoringController::class, 'filter'])->name('monitoring.filter');
+
+// Rute untuk tracking
+Route::get('/trackings', [TrackingController::class, 'index'])->name('trackings.index');
+Route::post('/trackings', [TrackingController::class, 'store'])->name('trackings.store');
+Route::delete('/trackings/{id}', [TrackingController::class, 'destroy'])->name('trackings.destroy');
+
+// Rute untuk konsultasi
+Route::get('/konsultasi', [KonsultasiController::class, 'index'])->name('konsultasi.index');
+
+// Rute untuk katalog
+Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog.index');
+
+// CRUD Dokter Kesehatan Hewan
+Route::get('/dokter', [DokterHewanController::class, 'index'])->name('dokter.index');
+Route::get('/dokter/create', [DokterHewanController::class, 'create'])->name('dokter.create');
+Route::post('/dokter/store', [DokterHewanController::class, 'store'])->name('dokter.store');
+Route::get('/dokter/{id}/edit', [DokterHewanController::class, 'edit'])->name('dokter.edit');
+Route::put('/dokter/{id}/update', [DokterHewanController::class, 'update'])->name('dokter.update');
+Route::delete('/dokter/{id}/destroy', [DokterHewanController::class, 'destroy'])->name('dokter.destroy');
+
+// Rute untuk forum
+Route::get('/forum', function () {
+    return view('Forum.forum');
+})->name('forum');
+
+// Rute untuk pemesanan
+Route::get('/pemesanan', function () {
+    return view('Pemesanan Vaksin.pemesanan');
+})->name('pemesanan');
+
+// Rute untuk panduan perawatan
+Route::get('/panduanperawatan', function () {
+    return view('panduan.rawat');
+})->name('panduanperawatan');
+
+// Rute untuk halaman profile
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+});
+
+// Rute untuk halaman profile
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+
+// Rute untuk menampilkan profil pengguna
+Route::get('/profile/show', function () {
+    return view('profile.show');
+})->name('profile.show');
 
 
-<div class="container">
-    <div class="row">
-         <div class="col-sm d-flex justify-content-start" style="margin-left: 50px; margin-top: 30px; margin-bottom: 50px;">
-            <div class="card mb-3" style="width: 271.37px; height: 298.71px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s; border-radius: 15px;">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f0ff947afbcb9d963c45656fe733f49d3d5ed181af501b3922a4129742e0fea9?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" class="card-img-top" alt="..." style="width: 83px; height: 84px; display: block; margin: 30px auto;">
-                <div class="card-body" style="text-align: justify;">
-                    <a href="#" style="text-decoration: none; color: inherit;">
-                        <h4 class="card-title text-center" style="font-weight: bold; color: #194544; font-size: 24px;">Health Consultation</h4>
-                    </a>
-                    <p class="card-text">Tersedia konsultasi kesehatan hewan ternak untuk memberikan saran terkait perawatan dan kesehatan hewan ternak.</p>
-                </div>
-            </div>
-        </div>
-         <div class="col-sm d-flex justify-content-start" style="margin-left: 50px; margin-top: 30px; margin-bottom: 50px;">
-            <div class="card mb-3" style="width: 271.37px; height: 298.71px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s; border-radius: 15px;">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/91f52c2dc7adfef2fb25e25e5d8971a7434a6ee8c91467324cbdaee8373d5f1a?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" alt="Product Image" class="product-image" class="card-img-top" alt="..." style="width: 83px; height: 84px; display: block; margin: 20px auto;">
-                <div class="card-body" style="text-align: justify;">
-                    <a href="#" style="text-decoration: none; color: inherit;">
-                        <h4 class="card-title text-center" style="font-weight: bold; color: #194544; font-size: 24px;">Livestock Catalog</h4>
-                    </a>
-                    <p class="card-text">Memberikan wawasan tentang penyakit umum yang ditemukan pada hewan ternak beserta langkah-langkah penanganannya</p>
-                </div>
-            </div>
-        </div>
-         <div class="col-sm d-flex justify-content-start" style="margin-left: 50px; margin-top: 30px; margin-bottom: 50px;">
-            <div class="card mb-3" style="width: 271.37px; height: 298.71px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s; border-radius: 15px;">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e0910ceb57d3f6a12e09570c972c3ec9b49ad24749df312e777c03e91febdbe?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" alt="Product Image" class="product-image" class="card-img-top" alt="..." style="width: 83px; height: 84px; display: block; margin: 20px auto;">
-                <div class="card-body" style="text-align: justify;">
-                    <a href="#" style="text-decoration: none; color: inherit;">
-                        <h4 class="card-title text-center" style="font-weight: bold; color: #194544; font-size: 24px;">Discussion Forum</h4>
-                    </a>
-                    <p class="card-text">Untuk berbagi informasi, pengalaman, dan pertanyaan terkait perawatan dan kesehatan hewan ternak antar anggota komunitas.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+// Rute untuk forum
+Route::get('/forum', [DiscussionController::class, 'index'])->name('diskusi.index');
+Route::middleware('auth')->group(function () {
+    Route::get('/forum/post', [DiscussionController::class, 'create'])->name('discussion.create');
+    Route::post('/forum/store', [DiscussionController::class, 'store'])->name('store.diskusi');
+});
 
+// Rute untuk detail diskusi
+Route::get('/forum/{id}', [DiscussionController::class, 'diskusiDetail'])->name('discussion.detail');
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col text-start">
-            <h5>Penawaran Menarik</h5>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Card 1</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Card 2</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Card 3</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+// Route riwayat
+Route::get('/riwayat', [UserHistoryController::class, 'index'])->name('riwayat.index');
 
+// Rute untuk komentar
+Route::post('/discussion/{discussionId}/comment', [CommentController::class, 'store'])->name('comment.store');
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col text-start">
-            <h5>Artikel</h5>
-        </div>
-    </div>
-    <div class="row"> <!-- Remove justify-content-start class -->
-        <div class="col-sm mb-3">
-            <div class="card h-100"> <!-- Add h-100 class to make the card full height -->
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card 1</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm mb-3">
-            <div class="card h-100"> <!-- Add h-100 class to make the card full height -->
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card 2</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm mb-3">
-            <div class="card h-100"> <!-- Add h-100 class to make the card full height -->
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card 3</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+//rute untuk berita
+Route::get('/berita', [BeritaController::class, 'index']);
 
-<!-- Footer -->
-<!-- Footer -->
-<!-- Footer -->
-<footer class="bg-custom text-white mt-5 small-footer">
-    <div class="container">
-        <div class="row py-2">
-            <div class="col-md-6">
-                <h5 class="mb-1">Kontak Emergency</h5>
-                <p class="mb-1">
-                    Farmedic<br>
-                    Jl. Kesehatan Hewan No. 45<br>
-                    Jakarta Selatan 12345<br>
-                    Indonesia<br>
-                    <i class="fa fa-phone"></i> (021) 1234 5678, (021) 8765 4321<br>
-                    <i class="fa fa-envelope"></i> emergency@farmedic.id
-                </p>
-            </div>
-            <div class="col-md-6 text-md-end">
-                <a href="#" class="text-white me-2"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="text-white me-2"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="text-white me-2"><i class="fa fa-instagram"></i></a>
-                <a href="#" class="text-white"><i class="fa fa-youtube"></i></a>
-            </div>
-        </div>
-    </div>
-</footer>
+//rute untuk kamus
+Route::get('/kamuspenyakit', [KamusController::class, 'index']);
+Route::get('/kamus/{id}', [KamusController::class, 'show']);
 
-<style>
-    .bg-custom {
-        background-color: #1B4445;
-    }
-    .small-footer {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .small-footer .col-md-6 h5,
-    .small-footer .col-md-6 p {
-        margin-bottom: 0.5rem;
-    }
-</style>
+//rute untuk rekomdasi obat
+Route::get('/rekomendasi_obat', [RekomendasiObatController::class, 'index']);
 
-@endsection
+Route::view('/kamus-penyakit', 'detailkamus.detail');
+
 

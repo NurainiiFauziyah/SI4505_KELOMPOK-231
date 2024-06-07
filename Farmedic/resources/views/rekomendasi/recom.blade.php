@@ -13,47 +13,136 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
+    <style>
+        .main-box {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    top: -30%;
+}
 
+.layer {
+    position: relative;
+    
+}
+
+.layer1 {
+    background-color: #869E9E;
+    height: 97%;
+    border-radius: 0 0 15px 15px; 
+}
+
+.layer2 {
+    background-color: #D4D8DB; 
+    height: 100%;
+    border-radius: 0 0 15px 15px; 
+}
+
+.content-box {
+    position: relative;
+    z-index: 3;
+    background: #1B4445;
+    border-radius: 0 0 70px 70px; 
+    padding : 20px;
+    height: 94%;
+    text-align: center; 
+    color: white;
+    padding: 100px 20px 20px;
+    font-family: 'Poppins', sans-serif; 
+} 
+
+.content-box .card-title {
+    font-weight: 700;
+    margin-bottom: 15px; 
+}
+
+.custom-container {
+    margin-top: 50px; 
+}
+
+.text-1 {
+    color: black;
+    font-size: 40px;
+    margin-bottom: 40px !important; 
+    font-weight: 600;
+
+}
+
+.text-2 {
+    color: #F18200;
+    font-size: 40px;
+    margin-bottom: 40px !important;
+    font-weight: 600;
+}
+
+
+.card-body {
+    padding: 20px; 
+}
+
+.card-body .card-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 10px; 
+}
+
+.card-body .card-text {
+    text-align: justify; 
+    font-size: 1em; 
+    line-height: 1.6; 
+    margin-bottom: 10px;
+}
+
+.card img {
+    width: 400px;
+    height: 300px;
+    display: block;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+    </style>
+    @extends('layouts.layout')
     <body>
-        @include ('kamuspenyakit.nav')
-        @include ('rekomendasi.headers')
-        <div class="kotak" style="width: 100%; height: 130%; justify-content:center; top: 391px; background-position:center; position: absolute; margin:auto;background: white; box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.25); border-radius: 41px 41px 0px 0px"></div>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col p-5">
-        <div class="card">
-        <img src="https://www.perkasaveterina.com/sites/default/files/INTERMECTIN.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Intermectin</h5>
-            <p class="card-text justify-content-center">TIntermectin adalah obat antiparasit untuk hewan ternak yang mengandung Ivermectin. Efektif melawan berbagai parasit internal dan eksternal, seperti cacing dan kutu pada sapi. Dosis: 1 ml/50 kg berat badan.</p>
-        </div>
-        </div>
-    </div>
-    <div class="col p-5">
-        <div class="card h-100">
-        <img src="https://s3.bukalapak.com/img/3736632125/large/wormectin_injeksi__5_ml__anti_parasit_luar_dan_parasit_dalam.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Wormectin</h5>
-            <p class="card-text">Wormectin adalah obat cacing untuk sapi yang mengandung Ivermectin. Obat ini digunakan untuk mengendalikan cacing internal pada sapi dengan cara mengganggu sistem saraf cacing. Wormectin efektif terhadap berbagai jenis cacing seperti cacing usus, hati, dan paru-paru pada sapi.</p>
-        </div>
+    @section('content')
+    <div class="d-flex justify-content-center align-items-center vh-50">
+        <div class="position-relative main-box">
+            <div class="layer layer2"></div>
+            <div class="layer layer1"></div>
+            <div class="content-box">
+                <h1 class="card-title">Rekomendasi Obat</h1>
+                <h1 class="card-title">Obat yang tepat untuk ternakmu!</h1>
+                <h5 class="card-text">Dapatkan rekomendasi obat terbaik untuk kondisi ternak Anda.</h5>
+            </div>
         </div>
     </div>
-    <div class="col p-5">
-        <div class="card">
-        <img src="https://th.bing.com/th/id/OIP.cFQq0dAtqXVn2a1HSrnHVwHaFr?w=1200&h=921&rs=1&pid=ImgDetMain" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Ivomec</h5>
-            <p class="card-text">Ivomec adalah obat cacing untuk sapi dengan kandungan Ivermectin. Dosis tipikalnya adalah 1 ml per 50 kg bobot badan, diberikan secara subkutan. Efek samping ringan mungkin termasuk gatal-gatal atau pembengkakan di area suntikan.</p>
-        </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
+
+
+    <div class="container custom-container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2><span class="text-1">Rekomendasi</span> <span class="text-2">Obat</span></h2>
         </div>
     </div>
+
+    <div class="row">
+        @foreach($rekomendasi_obats as $index => $rekomendasi_obat)
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ $rekomendasi_obat->gambar }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $rekomendasi_obat->nama }}</h5>
+                        <p class="card-text">{{ $rekomendasi_obat->keterangan }}</p>
+                    </div>
+                </div>
+            </div>
+            @if(($index + 1) % 3 == 0)
+                </div><div class="row">
+            @endif
+        @endforeach
     </div>
+</div>
+    @endsection
     </body>
+    </html>
