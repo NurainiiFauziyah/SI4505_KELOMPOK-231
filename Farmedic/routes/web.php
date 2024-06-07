@@ -2,7 +2,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\TrackingController;
@@ -11,11 +10,14 @@ use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\DokterHewanController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserHistoryController;
+use App\Http\Controllers\DiscussionController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\KamusController;
+use App\Http\Controllers\RekomendasiObatController;
+use App\Http\Controllers\WelcomeController;
 
 // Rute untuk halaman utama
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/welcome', [WelcomeController::class, 'index']);
 
 // Rute untuk register
 Route::get('/register', [SessionController::class, 'get_register']);
@@ -26,7 +28,7 @@ Route::get('/login', [SessionController::class, 'get_login']);
 Route::post('/login', [SessionController::class, 'post_login']);
 
 // Rute untuk logout
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/logout', [SessionController::class, 'logout']);
 
 // Rute untuk halaman beranda
 Route::match(['get', 'post'], '/homepage', function () {
@@ -74,16 +76,6 @@ Route::get('/panduanperawatan', function () {
     return view('panduan.rawat');
 })->name('panduanperawatan');
 
-// Rute untuk kamus penyakit
-Route::get('/kamuspenyakit', function () {
-    return view('kamuspenyakit.kamus');
-})->name('kamuspenyakit');
-
-// Rute untuk rekomendasi obat
-Route::get('/rekomendasiobat', function () {
-    return view('rekomendasi.recom');
-})->name('rekomendasiobat');
-
 // Rute untuk halaman profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
@@ -101,7 +93,6 @@ Route::get('/profile/show', function () {
     return view('profile.show');
 })->name('profile.show');
 
-use App\Http\Controllers\DiscussionController;
 
 // Rute untuk forum
 Route::get('/forum', [DiscussionController::class, 'index'])->name('diskusi.index');
@@ -118,3 +109,17 @@ Route::get('/riwayat', [UserHistoryController::class, 'index'])->name('riwayat.i
 
 // Rute untuk komentar
 Route::post('/discussion/{discussionId}/comment', [CommentController::class, 'store'])->name('comment.store');
+
+//rute untuk berita
+Route::get('/berita', [BeritaController::class, 'index']);
+
+//rute untuk kamus
+Route::get('/kamuspenyakit', [KamusController::class, 'index']);
+Route::get('/kamus/{id}', [KamusController::class, 'show']);
+
+//rute untuk rekomdasi obat
+Route::get('/rekomendasi_obat', [RekomendasiObatController::class, 'index']);
+
+Route::view('/kamus-penyakit', 'detailkamus.detail');
+
+

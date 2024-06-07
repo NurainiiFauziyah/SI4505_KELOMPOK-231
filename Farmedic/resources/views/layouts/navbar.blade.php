@@ -39,7 +39,6 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownLayanan" style="background-color: #FFFFFF; border-radius: 8px; padding: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: none; transition: opacity 0.5s ease;">
                     <a class="dropdown-item" href="kamuspenyakit" style="color: #1B4445;">Kamus penyakit</a>
-                    <a class="dropdown-item" href="#" style="color: #1B4445;">Panduan perawatan</a>
                     <a class="dropdown-item" href="konsultasi" style="color: #1B4445;">Konsultasi online</a>
                     <a class="dropdown-item" href="{{ route('pemesanan') }}" style="color: #1B4445;">Pemesanan vaksin</a>
                 </div>
@@ -154,6 +153,8 @@
             profileImage.src = "path_to_default_image";
         }
     });
+
+
 </script>
 </body>
 </html>

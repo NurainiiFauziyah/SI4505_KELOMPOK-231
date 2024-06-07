@@ -76,6 +76,9 @@ h1.card-title {
 .btn-obat {
             margin-right: 10px;
         }
+.card-body{
+    text-align: justify;
+}
     </style>
 <body>
 @extends('layouts.layout')
@@ -117,16 +120,9 @@ h1.card-title {
         <div class="col-md-6">
             <div class="card mb-4">
                 <div class="card-body">
-                    <h2 class="card-title">Estimasi Perawatan</h2>
+                    <h2 class="card-title">Gejala Penyakit</h2>
                     <p class="card-text">
-                        Untuk mengatasi cacingan pada sapi, waktu perawatan dapat bervariasi tergantung pada tingkat keparahan infeksi dan jenis cacing yang menginfeksi.
-                    </p>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Masa inkubasi virus PMK memiliki rentang waktu antara 2-14 hari sejak tertular hingga muncul gejala klinis</li>
-                        <li class="list-group-item">Vaksinasi yang dilakukan dalam kurun waktu 2-3 bulan setelah import bulk antigen datang</li>
-                    </ul>
-                    <p class="card-text">
-                        Perlu diingat, informasi di atas adalah perkiraan, dan waktu aktual dapat bervariasi. Untuk mendapatkan estimasi yang akurat, anda dapat melakukan konsultasi dengan dokter hewan atau spesialis peternakan lokal di tempat anda atau melakukan konsultasi online dengan dokter pada Farmedic.
+                    Cacingan pada sapi dapat menimbulkan berbagai gejala, termasuk penurunan berat badan yang signifikan, kehilangan nafsu makan, anemia yang terlihat dari gusi atau warna kulit yang pucat, diare, muntah, lambung kembung, serta penurunan produktivitas baik dalam produksi susu maupun pertambahan berat badan. Gejala-gejala ini disebabkan oleh gangguan yang disebabkan oleh cacing parasit dalam sistem pencernaan sapi. Penting untuk berkonsultasi dengan seorang dokter hewan jika Anda mencurigai sapi Anda menderita cacingan, karena perawatan yang tepat dan pengelolaan yang baik dapat membantu mengurangi dampak penyakit tersebut pada sapi dan kelompok ternak secara keseluruhan.
                     </p>
                 </div>
             </div>
