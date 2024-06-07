@@ -81,7 +81,7 @@ class SessionController extends Controller
                 'activity' => 'Login',
             ]);
 
-            return redirect('homepage')->with('success', 'Login Success');
+            return redirect('welcome')->with('success', 'Login Success');
         }else{
             return redirect('reglog.login')->withErrors('Email atau Password yang dimasukkan salah');
         }
