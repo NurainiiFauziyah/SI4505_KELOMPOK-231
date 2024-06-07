@@ -54,12 +54,12 @@ Route::get('/konsultasi', [KonsultasiController::class, 'index'])->name('konsult
 Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog.index');
 
 // CRUD Dokter Kesehatan Hewan
-Route::get('/dokter', [DokterHewanController::class, 'index'])->name('dokter.index');
-Route::get('/dokter/create', [DokterHewanController::class, 'create'])->name('dokter.create');
-Route::post('/dokter/store', [DokterHewanController::class, 'store'])->name('dokter.store');
-Route::get('/dokter/{id}/edit', [DokterHewanController::class, 'edit'])->name('dokter.edit');
-Route::put('/dokter/{id}/update', [DokterHewanController::class, 'update'])->name('dokter.update');
-Route::delete('/dokter/{id}/destroy', [DokterHewanController::class, 'destroy'])->name('dokter.destroy');
+Route::get('/dokter', [DokterHewanController::class, 'index'])->name('Dokter.index');
+Route::get('/dokter/create', [DokterHewanController::class, 'create'])->name('Dokter.create');
+Route::post('/dokter/store', [DokterHewanController::class, 'store'])->name('Dokter.store');
+Route::get('/dokter/{id}/edit', [DokterHewanController::class, 'edit'])->name('Dokter.edit');
+Route::put('/dokter/{id}/update', [DokterHewanController::class, 'update'])->name('Dokter.update');
+Route::delete('/dokter/{id}/destroy', [DokterHewanController::class, 'destroy'])->name('Dokter.destroy');
 
 // Rute untuk forum
 Route::get('/forum', function () {
