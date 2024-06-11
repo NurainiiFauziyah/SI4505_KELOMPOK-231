@@ -15,9 +15,12 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KamusController;
 use App\Http\Controllers\RekomendasiObatController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\VaccineController;
 
 // Rute untuk halaman utama
-Route::get('/welcome', [WelcomeController::class, 'index']);
+Route::get('/', function () {
+    return redirect('/login');
+});
 
 // Rute untuk register
 Route::get('/register', [SessionController::class, 'get_register']);
@@ -28,12 +31,10 @@ Route::get('/login', [SessionController::class, 'get_login']);
 Route::post('/login', [SessionController::class, 'post_login']);
 
 // Rute untuk logout
-Route::post('/logout', [SessionController::class, 'logout']);
+Route::get('/logout', [SessionController::class, 'logout'])->name('logout');
 
 // Rute untuk halaman beranda
-Route::match(['get', 'post'], '/homepage', function () {
-    return view('welcome');
-})->name('homepage');
+
 
 // Rute untuk reminder
 Route::get('/reminder', [ReminderController::class, 'index'])->name('reminder.index');
@@ -50,8 +51,7 @@ Route::delete('/trackings/{id}', [TrackingController::class, 'destroy'])->name('
 // Rute untuk konsultasi
 Route::get('/konsultasi', [KonsultasiController::class, 'index'])->name('konsultasi.index');
 
-// Rute untuk katalog
-Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog.index');
+
 
 // CRUD Dokter Kesehatan Hewan
 Route::get('/Dokter', [DokterHewanController::class, 'index'])->name('Dokter');
@@ -88,11 +88,6 @@ Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
 
-// Rute untuk menampilkan profil pengguna
-Route::get('/profile/show', function () {
-    return view('profile.show');
-})->name('profile.show');
-
 
 // Rute untuk forum
 Route::get('/forum', [DiscussionController::class, 'index'])->name('diskusi.index');
@@ -110,16 +105,19 @@ Route::get('/riwayat', [UserHistoryController::class, 'index'])->name('riwayat.i
 // Rute untuk komentar
 Route::post('/discussion/{discussionId}/comment', [CommentController::class, 'store'])->name('comment.store');
 
-//rute untuk berita
-Route::get('/berita', [BeritaController::class, 'index']);
+// Rute untuk berita
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
 
-//rute untuk kamus
+Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome.index');
+// Rute untuk kamus
 Route::get('/kamuspenyakit', [KamusController::class, 'index']);
 Route::get('/kamus/{id}', [KamusController::class, 'show']);
 
-//rute untuk rekomdasi obat
+// Rute untuk rekomendasi obat
 Route::get('/rekomendasi_obat', [RekomendasiObatController::class, 'index']);
 
 Route::view('/kamus-penyakit', 'detailkamus.detail');
-
-
+Route::post('/api/katalog/choice', [ProfileController::class, 'saveKatalogChoice'])->name('api.katalog.choice');
+Route::post('/api/vaksin/pesan', [UserHistoryController::class, 'pesanVaksin'])->name('vaksin.pesan');
+// Rute untuk katalog
+Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog.index');

@@ -13,6 +13,8 @@ class DiscussionController extends Controller
 {
     public function index()
     {
+        $discussions = Discussion::withCount('comments')->get();
+    
         // Mengambil data diskusi dari database
         $discussions = Discussion::with('user')->get();
 

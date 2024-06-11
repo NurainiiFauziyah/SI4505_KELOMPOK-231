@@ -23,12 +23,7 @@
 <div class="containerr">
     <div class="discussion-header">
         <div class="user-info">
-            @if(auth()->check())
-            <img src="{{ auth()->user()->avatar }}" alt="User Avatar">
-        @else
-        <img src="{{ asset('gambar\download (2).jpg') }}" alt="User Avatar" class="avatar">
-        @endif
-            
+            <h5>{{ $discussion->user->full_name }} : </h5>
             <div class="user-details">
                 <h4>{{ $discussion->title }}</h4>
                 <p>{{ $discussion->content }}</p>
@@ -38,7 +33,6 @@
             </div>
         </div>
     </div>
-
     
     <div class="discussion-response">
         <h5>Balasan Anda</h5>
@@ -55,27 +49,25 @@
         </form>
     </div>
 
-    
     <div class="comment-list">
         @foreach($discussion->comments as $comment)
             <div class="comment">
                 <div class="comment-avatar">
-                    @if(auth()->check())
-                    <img src="{{ auth()->user()->avatar }}" alt="User Avatar">
-                @else
-                <img src="{{ asset('gambar\download (2).jpg') }}" alt="User Avatar" class="avatar">
-                @endif
+                    @if($comment->user)
+                        <h5>{{ $comment->user->full_name }} : </h5>
+                    @else
+                        <h5>Unknown User : </h5>
+                    @endif
                 </div>
                 <div class="comment-details">
                     <p>{{ $comment->content }}</p>
                     @if($comment->photo)
-                    <img src="{{ asset('storage/app/photos'.$comment->photo) }}" alt="Uploaded Photo">
+                        <img src="{{ asset('storage/'.$comment->photo) }}" alt="Uploaded Photo" class="comment-photo">
                     @endif
                 </div>
             </div>
         @endforeach
     </div>
-    
 </div>
 
 <style>
@@ -202,8 +194,9 @@
         flex: 1;
     }
 
-    .comment-list .comment-details img {
-        max-width: 100%;
+    .comment-list .comment-details img.comment-photo {
+        max-width: 150px;
+        max-height: 150px;
         border-radius: 4px;
         margin-top: 10px;
     }

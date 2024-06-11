@@ -13,5 +13,7 @@ class Berita extends Model
 
     protected $fillable = ['judul', 'gambar', 'tanggal', 'url_berita']; // Kolom yang dapat diisi
 
+    public $timestamps = true; // Jika tabel menggunakan timestamp (created_at dan updated_at)
+
     // Tambahan kode lainnya sesuai kebutuhan
 }

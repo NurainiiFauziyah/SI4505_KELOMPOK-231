@@ -12,11 +12,12 @@ use Illuminate\Support\Facades\Session;
 
 class SessionController extends Controller
 {
-    function get_register(){
+    public function get_register()
+    {
         return view("reglog.register");
     }
 
-    function post_register(Request $request)
+    public function post_register(Request $request)
     {
         Session::flash('email', $request->email);
 
@@ -37,10 +38,10 @@ class SessionController extends Controller
         ]);
 
         $data = [
-            'full_name'=> $request->full_name,
-            'phone_number'=> $request->phone_number,
-            'email'=> $request->email,
-            'password'=>Hash::make($request->password)
+            'full_name' => $request->full_name,
+            'phone_number' => $request->phone_number,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ];
 
         $user = User::create($data);
@@ -51,43 +52,53 @@ class SessionController extends Controller
             'activity' => 'Mendaftar akun',
         ]);
 
-        return Redirect('/login')->with('success','Register Success');
+        return Redirect('/login')->with('success', 'Register Success');
     }
 
-    function get_login(){
+    public function get_login()
+    {
         return view("reglog.login");
     }
 
-    function post_login(Request $request){
-
-        Session::flash('email', $request->email);
-        $request ->validate([
-            'email'=>'required',
-            'password'=>'required',
-        ],[
-            'email.required'=>'email wajib diisi',
-            'password.required'=>'password wajib diisi',
+    public function post_login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ], [
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Masukkan email yang valid',
+            'password.required' => 'Password wajib diisi',
         ]);
 
         $infologin = [
-            'email' => $request ->email,
-            'password' => $request ->password,
+            'email' => $request->email,
+            'password' => $request->password,
         ];
 
-        if(Auth::attempt($infologin)){
+        if (Auth::attempt($infologin)) {
             // Menambahkan riwayat login
             History::create([
                 'user_id' => Auth::id(),
                 'activity' => 'Login',
             ]);
 
-            return redirect('welcome')->with('success', 'Login Success');
-        }else{
-            return redirect('reglog.login')->withErrors('Email atau Password yang dimasukkan salah');
+            // Cek apakah pengguna baru
+            $user = Auth::user();
+            if ($user->created_at == $user->updated_at) {
+                // Jika pengguna baru, arahkan ke halaman katalog
+                return redirect()->route('katalog.index')->with('success', 'Welcome! Please choose your livestock.');
+            } else {
+                // Jika pengguna lama, arahkan ke halaman homepage
+                return redirect()->route('welcome.index')->with('success', 'Login Success');
+            }
+        } else {
+            return redirect('login')->withErrors('Email atau Password yang dimasukkan salah');
         }
     }
 
-    function logout(){
+    public function logout()
+    {
         // Menambahkan riwayat logout
         History::create([
             'user_id' => Auth::id(),
@@ -95,6 +106,6 @@ class SessionController extends Controller
         ]);
 
         Auth::logout();
-        return redirect('reglog.login')->with('success', 'Logout Success');
+        return redirect('login')->with('success', 'Logout Success');
     }
 }

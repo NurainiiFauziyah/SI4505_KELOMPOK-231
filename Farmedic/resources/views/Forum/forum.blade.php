@@ -28,11 +28,7 @@
         @foreach($discussions as $discussion)
         <div class="discussion-item">
             <div class="discussion-avatar">
-                @if(auth()->check() && auth()->user()->avatar)
-                    <img src="{{ auth()->user()->avatar }}" alt="User Avatar">
-                @else
-                    <img src="gambar\download (2).jpg"  alt="Default Avatar">
-                @endif
+                <h5>{{ $discussion->user->full_name }} : </h5>
             </div>
             <div class="discussion-details">
                 <a href="{{ route('discussion.detail', ['id' => $discussion->id]) }}">
@@ -40,12 +36,11 @@
                 </a>
                 <p>{{ $discussion->content }}</p>
                 <div class="discussion-footer">
-                    <img src="gambar\download (2).jpg" alt="User Avatar">
                     <span>{{ $discussion->comments_count }} comments</span>
                 </div>
             </div>
         </div>
-        @endforeach
+    @endforeach
     </div>
     <div class="discussion-sidebar">
         @if(auth()->check())
@@ -60,7 +55,6 @@
         <div class="discussion-users">
             @foreach($users as $user)
             <div class="user-item">
-                <img src="gambar\download (2).jpg" alt="User Avatar">
                 <div class="user-details">
                     <h4>{{ $user->name }}</h4>
                     <p>{{ $user->bio }}</p>

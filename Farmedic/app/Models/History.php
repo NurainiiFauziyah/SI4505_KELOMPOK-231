@@ -13,7 +13,7 @@ class History extends Model
 
     public $timestamps = false;
 
-    protected $dates = ['created_at']; // Pastikan kolom 'created_at' diinterpretasikan sebagai tanggal
+    protected $dates = ['created_at']; 
 
     public function user()
     {

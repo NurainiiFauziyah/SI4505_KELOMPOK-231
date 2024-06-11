@@ -19,7 +19,7 @@ class CommentController extends Controller
 
         // Simpan foto jika diunggah
         if ($request->hasFile('photo')) {
-            $photoPath = $request->file('photo')->store('photos'); 
+            $photoPath = $request->file('photo')->store('photos', 'public'); 
         } else {
             $photoPath = null; // Jika pengguna tidak mengunggah foto, atur path foto menjadi null
         }
@@ -32,7 +32,7 @@ class CommentController extends Controller
         $comment->photo = $photoPath; // Simpan path foto ke dalam database
         $comment->save();
 
-                // Menyimpan riwayat aktivitas pengguna
+        // Menyimpan riwayat aktivitas pengguna
         $discussion = Discussion::find($discussionId);
         History::create([
             'user_id' => auth()->id(),
