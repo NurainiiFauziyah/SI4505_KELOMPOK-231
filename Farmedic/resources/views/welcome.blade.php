@@ -70,7 +70,7 @@
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/91f52c2dc7adfef2fb25e25e5d8971a7434a6ee8c91467324cbdaee8373d5f1a?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" alt="Product Image" class="card-img-top" style="width: 83px; height: 84px; display: block; margin: 20px auto;">
                 <div class="card-body" style="text-align: justify;">
                     <a href="#" style="text-decoration: none; color: inherit;">
-                        <h4 class="card-title text-center" style="font-weight: bold; color: #194544; font-size: 24px;">Livestock Catalog</h4>
+                        <h4 class="card-title text-center" style="font-weight: bold; color: #194544; font-size: 24px;">Disease Dictionary</h4>
                     </a>
                     <p class="card-text">Memberikan wawasan tentang penyakit umum yang ditemukan pada hewan ternak beserta langkah-langkah penanganannya.</p>
                 </div>
@@ -93,29 +93,57 @@
 <!-- Artikel Section -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col text-start">
-            <h5>Artikel</h5>
+        <div class="col">
+            <h5 class="text-left">Artikel</h5>
         </div>
     </div>
-    <div class="row">
-        @foreach($beritas as $index => $berita)
-            <div class="col-md-4 mb-4">
-                <div class="card">
+    <div class="row row-cols-1 row-cols-md-3 g-3 justify-content-center">
+        @foreach($beritas->take(3) as $berita)
+            <div class="col mb-4">
+                <div class="card h-100">
                     <a href="{{ $berita->url_berita }}" target="_blank" class="card-link">
                         <img src="{{ $berita->gambar }}" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
-                        <p class="tanggal-text">{{ $berita->tanggal }}</p>
-                        <h5 class="judul-title">{{ $berita->judul }}</h5>
+                        <p class="text-center tanggal-text">{{ $berita->tanggal }}</p>
+                        <h5 class="card-title text-center">{{ $berita->judul }}</h5>
                     </div>
                 </div>
             </div>
-            @if(($index + 1) % 3 == 0 && !$loop->last)
-                </div><div class="row">
-            @endif
         @endforeach
     </div>
+    </div>
+
+    </div>
 </div>
+
+<style>
+    /* CSS untuk mengatur jarak antara berita */
+    .row-cols-md-3 .col {
+        flex: 0 0 auto; /* Mengatur agar tidak melebar */
+        max-width: 100%; /* Menetapkan lebar maksimum */
+    }
+
+    .row-cols-md-3 .card {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-body {
+        flex: 1; /* Mengatur agar body kartu mengisi seluruh ruang yang tersedia */
+    }
+</style>
+    <!-- Button di ujung kanan bawah -->
+    <div class="row mt-4 justify-content-end">
+        <div class="col-auto">
+            <a href="/berita" class="btn btn-primary" style="background-color: #FF731D; border-color: #FF731D;">Lihat Semua Berita</a>
+        </div>
+    </div>
+</div>
+
 <!-- Footer -->
 <footer class="bg-custom text-white mt-5 small-footer">
     <div class="container">
