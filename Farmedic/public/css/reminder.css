@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+body{
+  background-color: #1B4445;
+  font-family: 'Poppins', sans-serif;
+}
+
+.title-underline {
+  color: #ffffff; /* Warna teks putih */
+  text-align: center;
+  margin-bottom: 40px;
+  text-decoration: underline; /* Menambahkan garis bawah pada teks */
+  font-size: 30px; /* Mengatur ukuran teks */
+  font-weight: 700; /* Mengatur teks menjadi bold */
+  font-family: 'Poppins', sans-serif; /* Mengatur font menjadi Poppins */
+}
+.card-text.no-margin {
+  margin-bottom: 0;
+  color: #F18200;
+  font-size: 14px; /* Mengatur ukuran teks */
+  font-weight: 700; /* Mengatur teks menjadi bold */
+  font-family: 'Poppins', sans-serif;
+}
+
+.card-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #060606;
+  margin-bottom: 0;
+}
+
+.card-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 0;
+  font-weight: 400;
+  margin-top: -5px;
+}
+
+/* reminder.css */
+.custom-card {
+  width: 50%;
+  margin: 5px;; /* Untuk memusatkan card secara horizontal */
+}
+
+.card-large {
+  width: 100%; /* Ubah dari 1250px menjadi 100% untuk membuatnya responsif *//* Tambahkan max-width agar tidak melebihi ukuran tertentu */
+  background: white;
+  box-shadow: 0px 2px 21.3px rgba(170, 170, 170, 0.25);
+  border-radius: 20px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.close-icon {
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+
+.btn-container {
+  display: flex; /* Atur posisi di sini (flex-start, center, flex-end, space-between, space-around) */
+  text-align: right ; 
+}
+
+.btn {
+  margin-left: 50px; /* Geser tombol ke kiri sebanyak 20px */
+  text-align: right ;
+}
+
+
+.modal-header {
+  color: rgb(238, 139, 0);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align :center;
+}
+.modal-content {
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.modal-footer {
+  background: #faf9f8;
+  justify-content: center; /* Center the button */
+}
+.btn-danger {
+  background: linear-gradient(45deg, #e52e71, #ff8a00);
+  border: none;
+  justify-content: center; 
+}
+.modal-body img {
+  border:  1px solid #ffffff;
+}
+
+.consultation-date span {
+  margin-right: 10px;
+}

@@ -1,8 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmedic - Detail</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card-img-top {
+            height: 150px;
+            width: 100px;
+            object-fit: cover; 
+        }
+
+        .card {
+            height: 520px; 
+            width: 300px;
+        }
+
+        .card-body .tanggal-text {
+            font-size: 12px;
+            color: #909090;
+            font-weight: 700;
+        }
+
+        .card-body .judul-title {
+            font-size: 16px;
+            color: rgb(0, 0, 0); 
+        }
+    </style>
+</head>
+<body>
 @extends('layouts.layout')
 
 @section('content')
+
 <!-- Carousel -->
-<div class="card mb-3" style="width: 100%; background-color: #1B4445; border: none; border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; height: 400px; display: flex; align-items: center; justify-content: space-between;">
+<div class="card mb-3" style="width: 100%; background-color: #1B4445; border: none; border-radius: 0 0 10px 10px; height: 400px; display: flex; align-items: center; justify-content: space-between;">
     <div class="card-body" style="display: flex; align-items: center; justify-content: start;">
         <div style="flex: 1; text-align: left; margin-right: 20px;">
             <h5 class="card-title" style="color: #FFFFFF; font-size: 30px;">Selamat datang di Farmedic!</h5>
@@ -14,11 +51,11 @@
     </div>
 </div>
 
-
+<!-- Card Section -->
 <div class="container">
     <div class="row">
-         <div class="col-sm d-flex justify-content-start" style="margin-left: 50px; margin-top: 30px; margin-bottom: 50px;">
-            <div class="card mb-3" style="width: 271.37px; height: 298.71px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s; border-radius: 15px;">
+        <div class="col-sm d-flex justify-content-start mb-5" style="margin-left: 50px;">
+            <div class="card" style="width: 271.37px; height: 298.71px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s; border-radius: 15px;">
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f0ff947afbcb9d963c45656fe733f49d3d5ed181af501b3922a4129742e0fea9?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" class="card-img-top" alt="..." style="width: 83px; height: 84px; display: block; margin: 30px auto;">
                 <div class="card-body" style="text-align: justify;">
                     <a href="#" style="text-decoration: none; color: inherit;">
@@ -28,20 +65,20 @@
                 </div>
             </div>
         </div>
-         <div class="col-sm d-flex justify-content-start" style="margin-left: 50px; margin-top: 30px; margin-bottom: 50px;">
-            <div class="card mb-3" style="width: 271.37px; height: 298.71px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s; border-radius: 15px;">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/91f52c2dc7adfef2fb25e25e5d8971a7434a6ee8c91467324cbdaee8373d5f1a?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" alt="Product Image" class="product-image" class="card-img-top" alt="..." style="width: 83px; height: 84px; display: block; margin: 20px auto;">
+        <div class="col-sm d-flex justify-content-start mb-5" style="margin-left: 50px;">
+            <div class="card" style="width: 271.37px; height: 298.71px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s; border-radius: 15px;">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/91f52c2dc7adfef2fb25e25e5d8971a7434a6ee8c91467324cbdaee8373d5f1a?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" alt="Product Image" class="card-img-top" style="width: 83px; height: 84px; display: block; margin: 20px auto;">
                 <div class="card-body" style="text-align: justify;">
                     <a href="#" style="text-decoration: none; color: inherit;">
-                        <h4 class="card-title text-center" style="font-weight: bold; color: #194544; font-size: 24px;">Livestock Catalog</h4>
+                        <h4 class="card-title text-center" style="font-weight: bold; color: #194544; font-size: 24px;">Disease Dictionary</h4>
                     </a>
-                    <p class="card-text">Memberikan wawasan tentang penyakit umum yang ditemukan pada hewan ternak beserta langkah-langkah penanganannya</p>
+                    <p class="card-text">Memberikan wawasan tentang penyakit umum yang ditemukan pada hewan ternak beserta langkah-langkah penanganannya.</p>
                 </div>
             </div>
         </div>
-         <div class="col-sm d-flex justify-content-start" style="margin-left: 50px; margin-top: 30px; margin-bottom: 50px;">
-            <div class="card mb-3" style="width: 271.37px; height: 298.71px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s; border-radius: 15px;">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e0910ceb57d3f6a12e09570c972c3ec9b49ad24749df312e777c03e91febdbe?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" alt="Product Image" class="product-image" class="card-img-top" alt="..." style="width: 83px; height: 84px; display: block; margin: 20px auto;">
+        <div class="col-sm d-flex justify-content-start mb-5" style="margin-left: 50px;">
+            <div class="card" style="width: 271.37px; height: 298.71px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s; border-radius: 15px;">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e0910ceb57d3f6a12e09570c972c3ec9b49ad24749df312e777c03e91febdbe?apiKey=fbbcae9ed22d4f8d8688a8a771dff213&" alt="Product Image" class="card-img-top" style="width: 83px; height: 84px; display: block; margin: 20px auto;">
                 <div class="card-body" style="text-align: justify;">
                     <a href="#" style="text-decoration: none; color: inherit;">
                         <h4 class="card-title text-center" style="font-weight: bold; color: #194544; font-size: 24px;">Discussion Forum</h4>
@@ -53,85 +90,85 @@
     </div>
 </div>
 
-
+<!-- Artikel Section -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col text-start">
-            <h5>Penawaran Menarik</h5>
+        <div class="col">
+            <h5 class="text-left">Artikel</h5>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Card 1</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div class="row row-cols-1 row-cols-md-3 g-3 justify-content-center">
+        @foreach($beritas->take(3) as $berita)
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <a href="{{ $berita->url_berita }}" target="_blank" class="card-link">
+                        <img src="{{ $berita->gambar }}" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <p class="text-center tanggal-text">{{ $berita->tanggal }}</p>
+                        <h5 class="card-title text-center">{{ $berita->judul }}</h5>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Card 2</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Card 3</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
+        @endforeach
+    </div>
+    </div>
+
+    </div>
+</div>
+
+<style>
+    /* CSS untuk mengatur jarak antara berita */
+    .row-cols-md-3 .col {
+        flex: 0 0 auto; /* Mengatur agar tidak melebar */
+        max-width: 100%; /* Menetapkan lebar maksimum */
+    }
+
+    .row-cols-md-3 .card {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-body {
+        flex: 1; /* Mengatur agar body kartu mengisi seluruh ruang yang tersedia */
+    }
+</style>
+    <!-- Button di ujung kanan bawah -->
+    <div class="row mt-4 justify-content-end">
+        <div class="col-auto">
+            <a href="/berita" class="btn btn-primary" style="background-color: #FF731D; border-color: #FF731D;">Lihat Semua Berita</a>
         </div>
     </div>
 </div>
 
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col text-start">
-            <h5>Artikel</h5>
-        </div>
-    </div>
-    <div class="row"> <!-- Remove justify-content-start class -->
-        <div class="col-sm mb-3">
-            <div class="card h-100"> <!-- Add h-100 class to make the card full height -->
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card 1</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
+<!-- Footer -->
+<footer class="bg-custom text-white mt-5 small-footer">
+    <div class="container">
+        <div class="row py-2">
+            <div class="col-md-6">
+                <h5 class="mb-1">Kontak Emergency</h5>
+                <p class="mb-1">
+                    Farmedic<br>
+                    Jl. Kesehatan Hewan No. 45<br>
+                    Jakarta Selatan 12345<br>
+                    Indonesia<br>
+                    <i class="fa fa-phone"></i> (021) 1234 5678, (021) 8765 4321<br>
+                    <i class="fa fa-envelope"></i> emergency@farmedic.id
+                </p>
             </div>
-        </div>
-        <div class="col-sm mb-3">
-            <div class="card h-100"> <!-- Add h-100 class to make the card full height -->
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card 2</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm mb-3">
-            <div class="card h-100"> <!-- Add h-100 class to make the card full height -->
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card 3</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
+            <div class="col-md-6 text-md-end">
+                <a href="#" class="text-white me-2"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="text-white me-2"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="text-white me-2"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="text-white"><i class="fa fa-youtube"></i></a>
             </div>
         </div>
     </div>
-</div>
+</footer>
 
-<<<<<<< Updated upstream
-@endsection
-=======
 <style>
     .bg-custom {
         background-color: #1B4445;
@@ -151,7 +188,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-<!-- User Profile Updt -->
->>>>>>> Stashed changes

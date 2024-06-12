@@ -1,18 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-<style>
-    .active-forum {
-        background-color: #F18200;
-        border-radius: 999px; /* Untuk membuatnya bulat */
-        padding: 10px;
-        color: white;
-        font-size: 15px;
-        font-family: Inter;
-        font-weight: 700;
-        word-wrap: break-word;
-    }
-</style>
 
 <!-- Carousel -->
 <div style="width: 100%; height: 400px; position: relative;">
@@ -31,4 +19,50 @@
         </div>
     </div>
 </div>
+
+
+
+
+<div class="discussion-container">
+    <div class="discussion-list">
+        @foreach($discussions as $discussion)
+        <div class="discussion-item">
+            <div class="discussion-avatar">
+                <h5>{{ $discussion->user->full_name }} : </h5>
+            </div>
+            <div class="discussion-details">
+                <a href="{{ route('discussion.detail', ['id' => $discussion->id]) }}">
+                    <h3>{{ $discussion->title }}</h3>
+                </a>
+                <p>{{ $discussion->content }}</p>
+                <div class="discussion-footer">
+                    <span>{{ $discussion->comments_count }} comments</span>
+                </div>
+            </div>
+        </div>
+    @endforeach
+    </div>
+    <div class="discussion-sidebar">
+        @if(auth()->check())
+            <a href="{{ route('discussion.create') }}" class="btnstart">Start New Discussion</a>
+        @else
+        <a href="/login" class="btnstart">Login to Start New Discussion</a>
+        @endif
+        <ul class="discussion-menu">
+            <li><a href=""><img src="gambar\diskusi.PNG" alt="Icon"> All Discussions</a></li>
+            <li><a href="#"><img src="gambar\follow.PNG" alt="Icon"> Following</a></li>
+        </ul>
+        <div class="discussion-users">
+            @foreach($users as $user)
+            <div class="user-item">
+                <div class="user-details">
+                    <h4>{{ $user->name }}</h4>
+                    <p>{{ $user->bio }}</p>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
 @endsection

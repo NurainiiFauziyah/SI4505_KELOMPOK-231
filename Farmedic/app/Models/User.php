@@ -11,13 +11,16 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
+     
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'full_name',
+        'phone_number',
         'email',
         'password',
     ];
@@ -44,5 +47,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
+    public function discussions()
+    {
+        return $this->hasMany(Discussion::class);
+    }
 }
