@@ -10,7 +10,7 @@
     <div class="box-header">
       <h3 class="box-title">Data Dokter</h3>
       <div class="pull-right">
-          <a href="{{route('Dokter.create')}}" class="btn btn-info">Tambah Data</a>
+          <a href="{{ route('Dokter.create') }}" class="btn btn-info">Tambah Data</a>
       </div>
     </div>
     <!-- /.box-header -->

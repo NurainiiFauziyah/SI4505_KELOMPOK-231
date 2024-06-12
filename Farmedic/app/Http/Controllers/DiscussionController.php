@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Discussion;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\History;
+
 
 class DiscussionController extends Controller
 {
     public function index()
     {
+        $discussions = Discussion::withCount('comments')->get();
+    
         // Mengambil data diskusi dari database
         $discussions = Discussion::with('user')->get();
 
@@ -44,11 +48,18 @@ class DiscussionController extends Controller
         ]);
 
         // Menyimpan data diskusi baru
-        Discussion::create([
+        $discussion = Discussion::create([
             'title' => $request->title,
             'content' => $request->content,
             'user_id' => auth()->id(), // Pastikan pengguna sudah terautentikasi
         ]);
+
+        History::create([
+            'user_id' => auth()->id(),
+            'activity' => 'Membuat diskusi: ' . $discussion->title,
+            'created_at' => now(), // Pastikan `created_at` diisi dengan timestamp saat ini
+        ]);
+        
 
         // Redirect ke halaman diskusi dengan pesan sukses
         return redirect()->route('diskusi.index')->with('success', 'Diskusi baru berhasil dibuat!');
