@@ -129,4 +129,29 @@
     </div>
 </div>
 
+<<<<<<< Updated upstream
 @endsection
+=======
+<style>
+    .bg-custom {
+        background-color: #1B4445;
+    }
+    .small-footer {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .small-footer .col-md-6 h5,
+    .small-footer .col-md-6 p {
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+@endsection
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+<!-- User Profile Updt -->
+>>>>>>> Stashed changes
