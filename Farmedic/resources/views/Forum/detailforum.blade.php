@@ -23,12 +23,7 @@
 <div class="containerr">
     <div class="discussion-header">
         <div class="user-info">
-            @if(auth()->check())
-            <img src="{{ auth()->user()->avatar }}" alt="User Avatar">
-        @else
-        <img src="{{ asset('gambar\download (2).jpg') }}" alt="User Avatar" class="avatar">
-        @endif
-            
+            <h5>{{ $discussion->user->full_name }} : </h5>
             <div class="user-details">
                 <h4>{{ $discussion->title }}</h4>
                 <p>{{ $discussion->content }}</p>
@@ -38,7 +33,6 @@
             </div>
         </div>
     </div>
-
     
     <div class="discussion-response">
         <h5>Balasan Anda</h5>
@@ -54,26 +48,26 @@
             <button type="submit" class="submit-button">Simpan Balasan</button>
         </form>
     </div>
+
     <div class="comment-list">
         @foreach($discussion->comments as $comment)
             <div class="comment">
                 <div class="comment-avatar">
-                    @if(auth()->check())
-                    <img src="{{ auth()->user()->avatar }}" alt="User Avatar">
-                @else
-                <img src="{{ asset('gambar\download (2).jpg') }}" alt="User Avatar" class="avatar">
-                @endif
+                    @if($comment->user)
+                        <h5>{{ $comment->user->full_name }} : </h5>
+                    @else
+                        <h5>Unknown User : </h5>
+                    @endif
                 </div>
                 <div class="comment-details">
                     <p>{{ $comment->content }}</p>
                     @if($comment->photo)
-                    <img src="{{ asset('storage/app/photos'.$comment->photo) }}" alt="Uploaded Photo">
+                        <img src="{{ asset('storage/'.$comment->photo) }}" alt="Uploaded Photo" class="comment-photo">
                     @endif
                 </div>
             </div>
         @endforeach
     </div>
-    
 </div>
 
 <style>
@@ -98,7 +92,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-       
     }
 
     .avatar {
@@ -110,6 +103,7 @@
 
     .user-details {
         flex: 1;
+        text-align: center;
     }
 
     .user-details h4 {
@@ -185,6 +179,28 @@
         margin: 0 auto;
     }
 
+    .comment-list .comment {
+        display: flex;
+        align-items: flex-start;
+        border-bottom: 1px solid #eee;
+        padding: 10px 0;
+    }
+
+    .comment-list .comment-avatar {
+        margin-right: 20px;
+    }
+
+    .comment-list .comment-details {
+        flex: 1;
+    }
+
+    .comment-list .comment-details img.comment-photo {
+        max-width: 150px;
+        max-height: 150px;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+
     @media (min-width: 769px) {
         .discussion-header {
             flex-direction: row;
@@ -241,4 +257,5 @@
         }
     }
 </style>
+
 @endsection

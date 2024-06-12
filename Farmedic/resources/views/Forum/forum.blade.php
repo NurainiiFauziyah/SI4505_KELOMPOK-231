@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <!-- Carousel -->
 <div style="width: 100%; height: 400px; position: relative;">
     <!-- Layer 1: Lapisan Teratas -->
@@ -21,33 +20,34 @@
     </div>
 </div>
 
+
+
+
 <div class="discussion-container">
     <div class="discussion-list">
         @foreach($discussions as $discussion)
         <div class="discussion-item">
             <div class="discussion-avatar">
-                @if(auth()->check())
-                <img src="{{ auth()->user()->avatar }}" alt="User Avatar">
-            @else
-                <img src="gambar\download (2).jpg" alt="Default Avatar">
-            @endif
+                <h5>{{ $discussion->user->full_name }} : </h5>
             </div>
             <div class="discussion-details">
                 <a href="{{ route('discussion.detail', ['id' => $discussion->id]) }}">
                     <h3>{{ $discussion->title }}</h3>
                 </a>
-                
                 <p>{{ $discussion->content }}</p>
                 <div class="discussion-footer">
-                    <img src="gambar\download (2).jpg" alt="User Avatar">
                     <span>{{ $discussion->comments_count }} comments</span>
                 </div>
             </div>
         </div>
-        @endforeach
+    @endforeach
     </div>
     <div class="discussion-sidebar">
-        <a href="{{ route('discussion.create') }}" class="btnstart">Start New Discussion</a>
+        @if(auth()->check())
+            <a href="{{ route('discussion.create') }}" class="btnstart">Start New Discussion</a>
+        @else
+        <a href="/login" class="btnstart">Login to Start New Discussion</a>
+        @endif
         <ul class="discussion-menu">
             <li><a href=""><img src="gambar\diskusi.PNG" alt="Icon"> All Discussions</a></li>
             <li><a href="#"><img src="gambar\follow.PNG" alt="Icon"> Following</a></li>
@@ -55,7 +55,6 @@
         <div class="discussion-users">
             @foreach($users as $user)
             <div class="user-item">
-                <img src="gambar\download (2).jpg" alt="User Avatar">
                 <div class="user-details">
                     <h4>{{ $user->name }}</h4>
                     <p>{{ $user->bio }}</p>
